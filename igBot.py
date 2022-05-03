@@ -4,11 +4,13 @@ import time
 import random
 
 class InstagramBot:
-    def __init__(self, username, password):
+    def __init__(self, username, password, path):
         self.username = username
         self.password = password
+        self.path = path
         #self.profile = 'dollynhocoach'
-        self.driver = webdriver.Firefox(executable_path="C:\\Users\\Serjao\\Desktop\\geckodriver.exe")
+        # self.driver = webdriver.Firefox(executable_path="C:\\Users\\Serjao\\Desktop\\geckodriver.exe")
+        self.driver = webdriver.Firefox(executable_path="C:\\Users\\mvfsa\\OneDrive\\Área de Trabalho\\Pastas\\igBot\\geckodriver.exe")
 
     def login(self):
         driver = self.driver
@@ -30,8 +32,8 @@ class InstagramBot:
         campo_senha.send_keys(Keys.RETURN)
 
         time.sleep(7)
-
-        self.comente_no_sorteio('p/B8ujLBplVLk')
+        # Caminho do sorteio
+        self.comente_no_sorteio(self.path)
         
     @staticmethod
     def digite_como_uma_pessoa(frase, onde_digitar):
@@ -47,25 +49,31 @@ class InstagramBot:
         contador=0
         while(0!=1):
             try:
-                comentarios = ["@karolabreu5","@delainefinatti","@deisefm26","@gisa1915","@glyra366","@deisefinatti","@don.bre","@slssaraiva","@erikabsaraiva","@lgsaraiva76","@duduabreuly","@isa_fs","@finattiandre","@andressafinatti","@christianefinatti","@rodzin25","@guiespinati","@leodelanda","@yasmimvancelotte","@rodslvrio","@gomes_briann","@nathilial","@biazete","@lucassdamess","@yagovillar07","@g_andre98","@rafaelteixeira_s","@thales300","@mikaela_alves42","@beccamnoel","@carollsimplicio","@carol.passos","@bebelarezende","@drumond_ste","@pedroaraujorodrigues_","@vicentinho_york","@hellengabrielaa","@juamanciom","@ziul6","@diixlyra","@cnevesss"]
+                # comentario_fixo = ["@karolabreu5 "]
+                # comentarios = ["@marcus.saraiva18", "@marcus.saraiva18", "@marcus.saraiva18", "@__gaabreu", "@dudalyra5", "@isa_fs", "@don.bre", "@lgsaraiva76", "@finattidelainecristina", "@__gaabreu", "@__gaabreu"]
+                comentarios = ["Que princesa linda!!!", "Linda demais. amo mto!!!"]
                 i=0
                 while(i!=2):
                     driver.find_element_by_class_name("Ypffh").click()
                     campo_comentario = driver.find_element_by_class_name("Ypffh")
                     time.sleep(random.randint(2,5))
+                    # Acrescentar for para número de perfis por comentário
+                    #self.digite_como_uma_pessoa(random.choice(comentarios),campo_comentario) 
+                    # self.digite_como_uma_pessoa(comentario_fixo,campo_comentario)
+                    #time.sleep(random.randint(2,5))
                     self.digite_como_uma_pessoa(random.choice(comentarios),campo_comentario)
                     time.sleep(random.randint(3,5))
+                    # Terminar for aqui
                     campo_comentario.send_keys(Keys.RETURN)
                     campo_comentario.send_keys(Keys.RETURN)
                     campo_comentario.send_keys(Keys.RETURN)
                     contador = contador + 1
+                    # Total de comentarios feitos
                     print(contador)
                     i = i + 1
-                    time.sleep(random.randint(5,9))
-                time.sleep(random.randint(300,600))
+                    # Fim
+                    time.sleep(random.randint(10,20))
+                time.sleep(random.randint(180,240))
             except Exception as e:
                 print(e)
                 time.sleep(5)
-
-javiBot = InstagramBot('seu_login','sua_senha')
-javiBot.login()
