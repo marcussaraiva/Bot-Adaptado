@@ -10,7 +10,7 @@ class InstagramBot:
         self.path = path
         self.comments = comments
         self.totalComment = totalComment
-        self.driver = webdriver.Firefox(executable_path="geckodriver.exe")
+        self.driver = webdriver.Firefox(executable_path="geckodriver/geckodriver.exe")
 
     def login(self):
         driver = self.driver
@@ -65,6 +65,8 @@ class InstagramBot:
         for letra in frase:
             onde_digitar.send_keys(letra)
             time.sleep(random.randint(1,5)/30)
+        onde_digitar.send_keys('\ue00d')
+
 
     def comente_no_sorteio(self,sorteio):
         driver = self.driver

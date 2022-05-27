@@ -24,12 +24,9 @@ class InterfaceGrafica:
         comments = self.values["Comments"]
         totalComment = self.values["TotalComment"]
         
-        # print(f'Username: {username}')
-        # print(f'Password: {password}')
-        # print(f'Password: {path}')
-        # print(f'Comments: {comments}')
         iniciar = kingo.InstagramBot(username, password, path, comments, totalComment)
-        iniciar.login()            
+        iniciar.login()
+        
 
 tela = InterfaceGrafica()
 tela.Iniciar()
